@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-09-30 15:45:44 senda>
+;; Time-stamp: <2015-10-02 10:24:32 shigeya>
 
 ;; from http://quantumfluctuation.blogspot.jp/2011/07/gnupack-cygwin-emacs.html
 
@@ -113,13 +113,16 @@
 ;; Time-stamp: " "
 
 ;;; ** undohist
+(el-get-bundle 'undohist)
 (use-package undohist
   :ensure t
   ;;  :loader el-get
   :config
   (progn
     (undohist-initialize)
-    ))
+    )
+  :pin manual
+  )
 
 ;;; ** redo+
 (use-package redo+
@@ -183,9 +186,9 @@
     ))
 
 ;;; ** smartparens
-(use-package smartparens-config
-  :disabled
-  :ensure smartparens
+(el-get-bundle 'smartparens)
+(use-package smartparens ;; smsmartparens-config
+  :ensure t ; smartparens
   :init
   (progn
     (custom-set-variables
@@ -193,7 +196,9 @@
      )
     (show-smartparens-global-mode 1) ;; 表示
     (smartparens-global-mode t)
-    ))
+    )
+  :pin manual
+  )
 
 ;;; ** recentf
 ;;  - 最近開いたファイルを保存しておいて開くときに選択
@@ -227,7 +232,11 @@ do nothing. And suppress the output from `message' and
 	ad-do-it))
     (custom-set-variables '(recentf-max-saved-items 500)
 			  '(recentf-exclude '("/TAGS$" "/var/tmp/"
-					      "recentf" ".cask"))
+					      "recentf" ".cask"
+					      "archive-contents"
+					      ".*-autoloads.el"
+					      ".*loaddefs.el"
+					      ))
 			  ;;'(recentf-save-file "~/.emacs.d/recentf")
 			  '(recentf-auto-cleanup 30)
 			  )
@@ -277,7 +286,9 @@ do nothing. And suppress the output from `message' and
     (bind-key "C-|"     'toggle-input-method) ;; define it instead of C-\
     (bind-key "S-SPC"   'toggle-input-method)
     ;;(bind-key "s-SPC"   'toggle-input-method)
-    ))
+    )
+  :pin manual
+)
 
 ;;; ** Tramp
 ;; リモートのファイル・ディレクトリを透過的に開く。

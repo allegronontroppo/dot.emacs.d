@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-09-30 15:08:09 senda>
+;; Time-stamp: <2015-10-08 10:21:16 shigeya>
 
 ;;; Code:
 
@@ -28,11 +28,9 @@
 
 ;;; ** use-package
 (el-get-bundle 'use-package)
-;(el-get-bundle 'req-package)
 (el-get-bundle 'bind-key)
 
 (eval-when-compile (require 'use-package))
-;(require 'req-package)
 (require 'bind-key)
 
 ;; use (use-package XXX ...) to customize inits file after here.
@@ -52,7 +50,7 @@
 
 ;;; http://d.hatena.ne.jp/tarao/20150221/1424518030#tips-byte-compilation 
 ;;(el-get-bundle tarao/with-eval-after-load-feature-el)
-(el-get-bundle 'with-eval-after-load-feature)
+;;(el-get-bundle 'with-eval-after-load-feature)
 
 ;; ex)
 ;; (el-get-bundle tarao/with-eval-after-load-feature-el)
@@ -70,23 +68,28 @@
 (el-get-bundle 'log4e)
 (require 'log4e)
 
-;;(req-package-force el-get
-;;  :init
-;;  (progn
-;;    (el-get 'sync)))
+;;; ** req-package
+(el-get-bundle 'req-package)
+(require 'req-package)
+(req-package-force el-get
+ :init
+ (progn
+   (el-get 'sync)))
 
 ;(req-package monokai-theme
 ;  :config (print "nonokai theme is here and installed from el-get"))
 
-(el-get 'sync)
+;(el-get 'sync)
 
 
 ;; load auto-install and package.el
 ;;    cf. http://d.hatena.ne.jp/m-hiyama-memo/20150514/1431592229
 
 ;; auto-install
-;;(el-get-bundle auto-install) 
+;;(el-get-bundle auto-install)  ;; ese manual install
+;;     curl -O http://www.emacswiki.org/emacs/download/auto-install.el
 (use-package auto-install
+  :disabled ;;
   :config
   (auto-install-update-emacswiki-package-name t)
   (auto-install-compatibility-setup)
@@ -95,11 +98,10 @@
 
 ;; package.el
 (use-package package
+  :disabled
   :config
   ;; Add package-archives
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
-  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+  ;;   --- use default valie of 24.1 or later
   ;; Initialize
   (package-initialize)
   :pin manual

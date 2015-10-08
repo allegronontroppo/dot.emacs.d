@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-01 11:06:29 shigeya>
+;; Time-stamp: <2015-10-02 11:18:15 shigeya>
 
 ;;; Code:
 
@@ -127,6 +127,7 @@
 
 ;;; ** anzu
 ;;    http://qiita.com/syohex/items/56cf3b7f7d9943f7a7ba
+(el-get-bundle 'anzu)
 (use-package anzu
   :ensure t
   :bind
@@ -146,7 +147,9 @@
   :config
   (progn
     (global-anzu-mode +1)
-    ))
+    )
+  :pin manual
+  )
 ;; anzu-query-replaceが query-replaceのanzu版,
 ;; anzu-query-replace-regexpが query-replace-regexpの anzu版となっています.
 ;; anzu-query-replace-at-cursor-thingです.

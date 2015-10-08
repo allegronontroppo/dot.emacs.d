@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-01 17:23:57 shigeya>
+;; Time-stamp: <2015-10-08 10:23:39 shigeya>
 
 ;;--------------------------------------------------------------------
 ;;　el-get + init-loader によるemacs初期化設定
@@ -54,23 +54,28 @@
 ;;
 ;;;; どうもel-get-install.elはうまくうごかないことがある。proxy環境だから？
 ;;;; site-lispの下に初期用にcloneしておくこと
-;;(add-to-list 'load-path (locate-user-emacs-file "site-lisp/el-get"))
-(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(add-to-list 'load-path (locate-user-emacs-file "site-lisp/el-get"))
+;;(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 
-(unless (require 'el-get nil 'noerror)
-  (require 'package)
-  (add-to-list 'package-archives
-	       '("melpa" . "http://melpa.org/packages/"))
-  (package-initialize)
-  (package-refresh-contents)
-  (package-install 'el-get) ;; el-get from melpa
-  (require 'el-get)
-  )
+;(unless (require 'el-get nil 'noerror)
+;  ;; use package.el to download el-get/el-get. (first time)
+;  (require 'package)
+;  (add-to-list 'package-archives
+;	       '("melpa" . "http://melpa.org/packages/"))
+;  (package-initialize)
+;  (package-refresh-contents)
+;  (package-install 'el-get) ;; el-get from melpa
+;  (require 'el-get)
+;  )
+(require 'el-get)
 
 (add-to-list 'el-get-recipe-path
 	     (locate-user-emacs-file "/el-get-user/recipes"))
 ;;
 ;; normalize installed el-get recipe path
+(let ((respdir (locate-user-emacs-file "site-lisp/el-get/recipes")))
+  (if (file-directory-p respdir)
+      (add-to-list 'el-get-recipe-path respdir)))
 (let ((respdir (locate-user-emacs-file "el-get/el-get/recipes")))
   (if (file-directory-p respdir)
       (add-to-list 'el-get-recipe-path respdir)))
@@ -81,7 +86,15 @@
 	       :type http
 	       :url "https://raw.github.com/gist/1021706/init-loader.el"
 	       :description "[My Recipes] Split management init.el.")
+	(:name mode-compile
+	       :type http
+	       :url "https://raw.githubusercontent.com/emacsmirror/mode-compile/master/mode-compile.el"
+	       :description "Mode compile Emacs Lisp libraries.")
 	))
+
+;; cf https://github.com/uwabami/emacs
+(setq el-get-verbose t)
+(setq el-get-github-default-url-type 'https)
 
 (el-get 'sync)
 

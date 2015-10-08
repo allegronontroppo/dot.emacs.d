@@ -5,10 +5,10 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-09-30 16:46:24 senda>
+;; Time-stamp: <2015-10-08 10:04:50 shigeya>
 
 
-;(req-package-finish)
+(req-package-finish)
 
 
 ;; Local Variables:

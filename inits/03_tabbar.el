@@ -5,12 +5,12 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-09-28 17:35:42 senda>
+;; Time-stamp: <2015-10-02 12:48:45 shigeya>
 
 ;;; Code:
 
 ;;; ** tabbar
-
+(el-get-bundle 'tabbar)
 (use-package tabbar
   :ensure t
   :bind     ;; キーバインド設定
@@ -92,7 +92,9 @@
     ;; タブ間隔の調整
     (set-face-attribute 'tabbar-separator nil
 			:height 0.1)
-    ))
+    )
+  :pin manual
+  )
 
 ;; Local Variables:
 ;; truncate-lines: nil
@@ -100,4 +102,5 @@
 ;; orgstruct-heading-prefix-regexp: "^;;; "
 ;; End:
 ;;; 03-tabbar.el ends here
+
 

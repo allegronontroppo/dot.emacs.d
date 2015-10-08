@@ -1,0 +1,5 @@
+(:name auto-save-buffers-enhanced
+       :type github
+       :pkgname "kentaro/auto-save-buffers-enhanced"
+       :description "auto buffer save feature"
+       :website "https://github.com/kentaro/auto-save-buffers-enhanced")

@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-08 12:25:24 shigeya>
+;; Time-stamp: <2015-10-08 17:20:46 shigeya>
 
 ;;; Code:
 
@@ -45,7 +45,7 @@ if you have a '~/.emacs.d/snipets/<major-mode>/new-file-tpl' file.
 (defun @LOGIN@ ()     (user-login-name))
 
 
-(use-package yasnippet-bundle
+(req-package yasnippet-bundle
   :ensure yasnippet
   :bind
   (("C-+" . yas-expand-from-trigger-key)
@@ -56,7 +56,8 @@ if you have a '~/.emacs.d/snipets/<major-mode>/new-file-tpl' file.
    ("M-g C-v" . yas-visit-snippet-file))  ;; 既存スニペットを閲覧・編集する
   :init
   (progn
-    (use-package yasnippet :ensure t)
+    (el-get-bundle 'yasnippet)
+    (req-package yasnippet :ensure t :loader el-get)
     (custom-set-variables
      '(yas-new-snippet-default "\
 # -*- mode: snippet -*-
@@ -79,7 +80,9 @@ $0"))
     ;;(bind-key "C-/" 'hippie-expand)
     (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand)
     ;;
-    (use-package header2 :ensure t) ;; emacs-lisp新規ファイルsnippetで使用
+    (el-get-bundle 'header2)
+    (req-package header2 :ensure t :loader el-get)
+    ;; emacs-lisp新規ファイルsnippetで使用
     )
   :config
   (progn
@@ -96,7 +99,9 @@ $0"))
 
 ;;; ** helm-c-yasnippet
 
-(use-package helm-c-yasnippet
+(el-get-bundle 'helm-c-yasnippet)
+(req-package helm-c-yasnippet
+  :loader el-get
   :ensure t
   :bind
   (("C-c y" . helm-yas-complete)) ;; モードで定義されているsnippetを調べるのによい。

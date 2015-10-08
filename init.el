@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-08 10:23:39 shigeya>
+;; Time-stamp: <2015-10-08 16:46:42 shigeya>
 
 ;;--------------------------------------------------------------------
 ;;　el-get + init-loader によるemacs初期化設定
@@ -70,7 +70,7 @@
 (require 'el-get)
 
 (add-to-list 'el-get-recipe-path
-	     (locate-user-emacs-file "/el-get-user/recipes"))
+	     (locate-user-emacs-file "el-get-user/recipes"))
 ;;
 ;; normalize installed el-get recipe path
 (let ((respdir (locate-user-emacs-file "site-lisp/el-get/recipes")))

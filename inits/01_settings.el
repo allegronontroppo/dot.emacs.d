@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-02 10:24:32 shigeya>
+;; Time-stamp: <2015-10-08 17:46:55 shigeya>
 
 ;; from http://quantumfluctuation.blogspot.jp/2011/07/gnupack-cygwin-emacs.html
 
@@ -92,7 +92,7 @@
 
 ;;; ** historyのセーブを有効に。
 (use-package savehist
-  :init
+  :config
   (savehist-mode 1)
   )
 
@@ -113,27 +113,16 @@
 ;; Time-stamp: " "
 
 ;;; ** undohist
-(el-get-bundle 'undohist)
-(use-package undohist
+;;(el-get-bundle 'undohist)
+(req-package undohist
   :ensure t
-  ;;  :loader el-get
+  :loader el-get
   :config
   (progn
     (undohist-initialize)
     )
-  :pin manual
+  ;; :pin manual
   )
-
-;;; ** redo+
-(use-package redo+
-  :disabled ;; evilをつかうとundo-treeが入る。これを設定する必要なし。
-  :ensure t
-  :bind
-  (("C-M-/" . redo))
-  :init
-  (progn
-    (setq undo-no-redo t)
-    ))
 
 ;;; ** parameters
 (custom-set-variables
@@ -171,24 +160,12 @@
     ad-do-it))
 
 ;;; ** 括弧の対応表示
-;; メモ：
-;; 簡単な長い範囲でのカッコ対応確認方法：
-;;    →  ')'の後ろでC-M-bで対応する'('に飛ぶ。C-M-fで元に。
-(use-package mic-paren ; loading
-  :disabled ;; smartparen使うので。
-  :ensure t
-  :init
-  (progn
-    (custom-set-variables
-     '(parse-sexp-ignore-comments t) ;; コメント内のカッコは無視。(c-mode)
-     )
-    (paren-activate)     ; activating
-    ))
 
 ;;; ** smartparens
-(el-get-bundle 'smartparens)
-(use-package smartparens ;; smsmartparens-config
+;;(el-get-bundle 'smartparens)
+(req-package smartparens ;; smsmartparens-config
   :ensure t ; smartparens
+  :loader el-get
   :init
   (progn
     (custom-set-variables
@@ -197,12 +174,14 @@
     (show-smartparens-global-mode 1) ;; 表示
     (smartparens-global-mode t)
     )
-  :pin manual
+  ;;:pin manual
   )
 
 ;;; ** recentf
 ;;  - 最近開いたファイルを保存しておいて開くときに選択
-(use-package recentf
+;https://github.com/emacsmirror/recentf-ext
+(req-package recentf
+  :loader builtin
   :init
   (progn
     ;; http://masutaka.net/chalow/2011-10-30-2.html
@@ -240,7 +219,10 @@ do nothing. And suppress the output from `message' and
 			  ;;'(recentf-save-file "~/.emacs.d/recentf")
 			  '(recentf-auto-cleanup 30)
 			  )
-    (use-package recentf-ext)
+    (req-package recentf-ext
+      :ensure t
+      :loader el-get
+      )
     (run-with-idle-timer 30 t 'recentf-save-list)
     (recentf-mode 1)
     ))
@@ -336,8 +318,9 @@ do nothing. And suppress the output from `message' and
 
 ;;; ** auto-save-buffer-enhanched
 
-(use-package auto-save-buffers-enhanced
+(req-package auto-save-buffers-enhanced
   :ensure t
+  :loader el-get
   :config
   (progn
     ;; git/cvs/svn checkout file
@@ -349,17 +332,21 @@ do nothing. And suppress the output from `message' and
 
 ;;; ** expand-region
 
-(use-package expand-region :ensure t)
+(req-package expand-region
+  :ensure t
+  :loader el-get
+  )
 
 ;;; ** multiple-cursors
 
-(use-package multiple-cursors
+(req-package multiple-cursors
   :ensure t
   ;; キーバインドはevil-leaderで設定する。
   ;; "C-\ c" 'mc/mark-next-like-this
   ;; "C-\ C" 'mc/mark-all-like-this
   ;;  C-\ C-c 'mc/mark-more--like-this-extended
   ;;  C-\ E : mc/edit-lines
+  :loader el-get
   )
 
 (use-package smartrep

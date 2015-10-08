@@ -1,19 +1,21 @@
-;;; 21-auto-complete.el --- mode settings  -*- mode: emacs-lisp ; coding: utf-8 ; lexical-binding: t  -*-
+;;; 21_auto-complete.el --- mode settings  -*- mode: emacs-lisp ; coding: utf-8 ; lexical-binding: t  -*-
 ;; Author: shigeya
 ;; Maintainer: shigeya
 ;; Created: Sun May 11 16:29:22 2014
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-02-20 16:21:37 senda>
+;; Time-stamp: <2015-10-08 16:52:36 shigeya>
 
 ;;; Code:
 
 ;;; ** auto-complete
 
 ;;  日本語マニュアル：http://cx4a.org/software/auto-complete/manual.ja.html
-(use-package auto-complete
+(el-get-bundle 'auto-complete)
+(req-package auto-complete
   :ensure t
+  :loader el-get
   :config
   (progn
     (require 'auto-complete)

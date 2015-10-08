@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-08 10:21:16 shigeya>
+;; Time-stamp: <2015-10-08 14:45:45 shigeya>
 
 ;;; Code:
 
@@ -89,7 +89,7 @@
 ;;(el-get-bundle auto-install)  ;; ese manual install
 ;;     curl -O http://www.emacswiki.org/emacs/download/auto-install.el
 (use-package auto-install
-  :disabled ;;
+  :disabled ;; NOT USED
   :config
   (auto-install-update-emacswiki-package-name t)
   (auto-install-compatibility-setup)
@@ -98,7 +98,7 @@
 
 ;; package.el
 (use-package package
-  :disabled
+  :disabled ;; NOT USED
   :config
   ;; Add package-archives
   ;;   --- use default valie of 24.1 or later

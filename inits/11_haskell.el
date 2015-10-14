@@ -1,18 +1,20 @@
-;;; 11-haskell.el --- mode settings  -*- mode: emacs-lisp ; coding: utf-8 ; lexical-binding: t  -*-
+;;; 11_haskell.el --- mode settings  -*- mode: emacs-lisp ; coding: utf-8 ; lexical-binding: t  -*-
 ;; Author: shigeya
 ;; Maintainer: shigeya
 ;; Created: Sun May 11 16:32:22 2014
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2014-05-26 09:35:58 senda>
+;; Time-stamp: <2015-10-13 12:33:25 shigeya>
 
 ;;; Code:
 
 ;;; ** haskell-mode
-(use-package haskell-mode
-  :disabled
+(el-get-bundle 'haskell-mode)
+(req-package haskell-mode
+;;  :disabled
   :ensure t
+  :loader el-get
   :commands
   (literate-haskell-mode haskell-mode)
   :mode
@@ -49,12 +51,14 @@
       (autoload 'ghc-debug "ghc" nil t)
       (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
       )
-    (use-package shm
+    (req-package shm
+      :loader el-get
       :ensure shm
       :commands structured-haskell-mode
       :init (add-hook 'haskell-mode-hook 'structured-haskell-mode)
       )
-    (use-package hi2
+    (req-package hi2
+      :loader el-get
       :disabled
       :init
       (add-hook 'haskell-mode-hook 'turn-on-hi2)
@@ -66,4 +70,4 @@
 ;; eval: (orgstruct-mode 1)
 ;; orgstruct-heading-prefix-regexp: "^;;; "
 ;; End:
-;;; 11-haskell.el ends here
+;;; 11_haskell.el ends here

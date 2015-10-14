@@ -5,15 +5,16 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-06 13:10:57 shigeya>
+;; Time-stamp: <2015-10-09 11:16:59 shigeya>
 
 ;;; Code:
 
 ;;; ** org-mode
 
 ;(el-get-bundle 'org-mode)
-(use-package org
+(req-package org
   :ensure t
+  :loader elpa
 ;  :pin manual
   :mode
   (("\\.org$" . org-mode))    ;; 拡張子がorgのファイルはorg-modeに
@@ -26,9 +27,9 @@
    )
   :config
   (progn
-    (use-package org-install :ensure org)
-    (use-package org-capture :ensure org)
-    (use-package org-agenda :ensure org)
+    (req-package org-install :ensure org)
+    (req-package org-capture :ensure org)
+    (req-package org-agenda :ensure org)
     (custom-set-variables
      ;; TODO状態
      '(org-todo-keywords
@@ -110,7 +111,7 @@
     (global-set-key (kbd "<f5>") 'my-toggle-doing-tag)
 
     ;; MobileOrg
-    (use-package org-mobile
+    (req-package org-mobile
       :config
       (progn
 	(setq org-mobile-directory (concat dropbox-dir "Apps/MobileOrg/"))
@@ -139,7 +140,7 @@
     ;; plantUML
     (let ((jar "~/bin/plantuml.jar"))
       (when (file-exists-p jar)
-	(use-package ob-plantuml
+	(req-package ob-plantuml
 	  :ensure org
 	  :init
 	  (progn
@@ -152,7 +153,7 @@
 			  ))
 	    ))))
 
-    (use-package helm-orgcard
+    (req-package helm-orgcard
       :ensure t
       :init
       (progn

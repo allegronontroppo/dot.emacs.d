@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-08 16:46:42 shigeya>
+;; Time-stamp: <2015-10-09 09:48:39 shigeya>
 
 ;;--------------------------------------------------------------------
 ;;　el-get + init-loader によるemacs初期化設定
@@ -69,9 +69,6 @@
 ;  )
 (require 'el-get)
 
-(add-to-list 'el-get-recipe-path
-	     (locate-user-emacs-file "el-get-user/recipes"))
-;;
 ;; normalize installed el-get recipe path
 (let ((respdir (locate-user-emacs-file "site-lisp/el-get/recipes")))
   (if (file-directory-p respdir)
@@ -79,6 +76,15 @@
 (let ((respdir (locate-user-emacs-file "el-get/el-get/recipes")))
   (if (file-directory-p respdir)
       (add-to-list 'el-get-recipe-path respdir)))
+;; user recipes
+(add-to-list 'el-get-recipe-path
+	     (locate-user-emacs-file "el-get-user/recipes"))
+
+;; correct emacswiki base
+(setq el-get-emacswiki-base-url
+      ;"https://raw.githubusercontent.com/emacsmirror/emacswiki.org/master/"
+      "http://www.emacswiki.org/emacs/download/"
+) ;;; not work....
 
 (setq el-get-sources
       '(
@@ -90,6 +96,9 @@
 	       :type http
 	       :url "https://raw.githubusercontent.com/emacsmirror/mode-compile/master/mode-compile.el"
 	       :description "Mode compile Emacs Lisp libraries.")
+;	(:name header2
+;	       :type http
+;	       :url "https://raw.githubusercontent.com/emacsmirror/emacswiki.org/master/header2.el")
 	))
 
 ;; cf https://github.com/uwabami/emacs

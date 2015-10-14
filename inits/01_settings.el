@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-08 17:46:55 shigeya>
+;; Time-stamp: <2015-10-09 10:28:08 shigeya>
 
 ;; from http://quantumfluctuation.blogspot.jp/2011/07/gnupack-cygwin-emacs.html
 
@@ -331,14 +331,14 @@ do nothing. And suppress the output from `message' and
     ))
 
 ;;; ** expand-region
-
+(el-get-bundle 'expand-region)
 (req-package expand-region
   :ensure t
   :loader el-get
   )
 
 ;;; ** multiple-cursors
-
+(el-get-bundle 'multiple-cursors)
 (req-package multiple-cursors
   :ensure t
   ;; キーバインドはevil-leaderで設定する。

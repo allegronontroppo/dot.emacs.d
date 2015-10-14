@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-08 14:45:45 shigeya>
+;; Time-stamp: <2015-10-09 10:00:42 shigeya>
 
 ;;; Code:
 
@@ -88,24 +88,24 @@
 ;; auto-install
 ;;(el-get-bundle auto-install)  ;; ese manual install
 ;;     curl -O http://www.emacswiki.org/emacs/download/auto-install.el
-(use-package auto-install
-  :disabled ;; NOT USED
-  :config
-  (auto-install-update-emacswiki-package-name t)
-  (auto-install-compatibility-setup)
-  :pin manual
-)
+;(use-package auto-install
+;  :disabled ;; NOT USED
+;  :config
+;  (auto-install-update-emacswiki-package-name t)
+;  (auto-install-compatibility-setup)
+;  :pin manual
+;)
 
 ;; package.el
-(use-package package
-  :disabled ;; NOT USED
-  :config
+;(use-package package
+;  :disabled ;; NOT USED
+;  :config
   ;; Add package-archives
   ;;   --- use default valie of 24.1 or later
   ;; Initialize
-  (package-initialize)
-  :pin manual
-)
+;  (package-initialize)
+;  :pin manual
+;)
 
 ;; Local Variables:
 ;; truncate-lines: nil

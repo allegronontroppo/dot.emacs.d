@@ -5,13 +5,14 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-06 17:10:27 shigeya>
+;; Time-stamp: <2015-10-09 10:33:40 shigeya>
 
 ;;; Code:
 
 ;;; * modes
 ;;; ** font-lock mode
-(use-package font-lock
+(req-package font-lock
+  :loader builtin
   :config
   (progn
     ;; タブ, 全角スペースを色つき表示 (色名は M-x list-color-display で調べる)
@@ -55,7 +56,7 @@
 ;;M-n 	矩形領域を連番で埋める。フォーマット指定可
 ;; http://kreisel.fam.cx/webmaster/clog/2010-09-20-1.html
 
-(use-package cua-base
+(req-package cua-base
   :config
   (progn
     (cua-mode t)
@@ -73,7 +74,7 @@
     (if (y-or-n-p (format "Open 'w3m' %s " (file-name-nondirectory file)))
         (w3m-find-file file))))
 
-(use-package w3m
+(req-package w3m
   :commands (w3m w3m-browse-url w3m-find-file w3m-session-crash-recovery-remove)
   :config
   (progn
@@ -121,7 +122,7 @@
 ;; 【L】 to load a elisp file.
 ;;  *. で拡張子指定マーク
 ;;  %. でregexでマーク
-(use-package dired+
+(req-package dired+
   :disabled t  ;; disable!!
   :ensure t
   :bind
@@ -154,12 +155,10 @@
 
 
 ;;; ** auto-complete
-(use-package auto-complete
-  
-  )
+(req-package auto-complete)
 
 ;;; ** ediff
-(use-package ediff-hook)
+(req-package ediff-hook)
 
 ;;; ** diff-modeの色づけ
 ;; http://www.clear-code.com/blog/2012/4/3.html
@@ -260,7 +259,9 @@
 
 ;;; ** elisp slime navi
 ;; slimeのナビゲーションをelispに移植したもの
-(use-package elisp-slime-nav
+(el-get-bundle 'elisp-slime-nav)
+(req-package elisp-slime-nav
+  :loader el-get
   :config
   (progn
     (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
@@ -274,9 +275,8 @@
 
 ;;; ** clojure
 
-(el-get-bundle 'cider)
-(use-package cider
-  :pin manual
+;(el-get-bundle 'cider)
+(req-package cider
   :ensure cider
   :commands (cider-mode)
   :config
@@ -284,8 +284,8 @@
     (add-hook 'cider-mode-hook 'cide-turn-on-eldoc-mode)
     ))
 
-(el-get-bundle 'clojure-mode)
-(use-package clojure-mode
+;(el-get-bundle 'clojure-mode)
+(req-package clojure-mode
   :pin manual
   :ensure t
   :config

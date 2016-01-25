@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-02 11:18:15 shigeya>
+;; Time-stamp: <2016-01-25 11:34:52 senda>
 
 ;;; Code:
 
@@ -127,7 +127,7 @@
 
 ;;; ** anzu
 ;;    http://qiita.com/syohex/items/56cf3b7f7d9943f7a7ba
-(el-get-bundle 'anzu)
+(el-get-bundle elpa:anzu)
 (use-package anzu
   :ensure t
   :bind

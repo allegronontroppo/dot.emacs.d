@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-09 10:28:08 shigeya>
+;; Time-stamp: <2016-01-25 13:11:08 senda>
 
 ;; from http://quantumfluctuation.blogspot.jp/2011/07/gnupack-cygwin-emacs.html
 
@@ -113,10 +113,10 @@
 ;; Time-stamp: " "
 
 ;;; ** undohist
-;;(el-get-bundle 'undohist)
+(el-get-bundle elpa:undohist)
 (req-package undohist
   :ensure t
-  :loader el-get
+;  :loader el-get
   :config
   (progn
     (undohist-initialize)
@@ -161,9 +161,10 @@
 
 ;;; ** 括弧の対応表示
 
-;;; ** smartparens
+;;; **  smartparens
 ;;(el-get-bundle 'smartparens)
 (req-package smartparens ;; smsmartparens-config
+  :disabled
   :ensure t ; smartparens
   :loader el-get
   :init
@@ -179,11 +180,13 @@
 
 ;;; ** recentf
 ;;  - 最近開いたファイルを保存しておいて開くときに選択
-;https://github.com/emacsmirror/recentf-ext
+;; https://github.com/emacsmirror/recentf-ext
+(el-get-bundle 'recentf-ext)
 (req-package recentf
   :loader builtin
   :init
   (progn
+    (require 'recentf-ext)
     ;; http://masutaka.net/chalow/2011-10-30-2.html
     ;;   うるさいメッセージをminibufferに吐かないように。
     (defvar my-recentf-list-prev nil)
@@ -317,10 +320,10 @@ do nothing. And suppress the output from `message' and
 ;; (setq trim-versions-without-asking nil)
 
 ;;; ** auto-save-buffer-enhanched
-
+(el-get-bundle elpa:auto-save-buffers-enhanced)
 (req-package auto-save-buffers-enhanced
   :ensure t
-  :loader el-get
+;  :loader el-get
   :config
   (progn
     ;; git/cvs/svn checkout file

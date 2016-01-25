@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-09 09:48:39 shigeya>
+;; Time-stamp: <2016-01-25 11:57:35 senda>
 
 ;;--------------------------------------------------------------------
 ;;　el-get + init-loader によるemacs初期化設定
@@ -95,7 +95,21 @@
 	(:name mode-compile
 	       :type http
 	       :url "https://raw.githubusercontent.com/emacsmirror/mode-compile/master/mode-compile.el"
-	       :description "Mode compile Emacs Lisp libraries.")
+	       :description "Mode compile Emacs Lisp libraries."
+	       :lazy t)
+	(:name bind-key
+	       :description "bind-key"
+	       :type github
+	       :pkgname "emacsattic/bind-key")
+	(:name recentf-ext
+	       :description "最近開いたファイルを保存しておいて開くときに選択 https://github.com/emacsmirror/recentf-ext"
+	       :type github
+	       :pkgname "emacsmirror/recentf-ext")
+;	(:name anzu
+;	       :description "a minor mode which displays current match and total matches information in the mode-line in various search modes"
+;	       :lazy t
+;	       :type github
+;	       :pkgname "syohex/emacs-anzu")
 ;	(:name header2
 ;	       :type http
 ;	       :url "https://raw.githubusercontent.com/emacsmirror/emacswiki.org/master/header2.el")

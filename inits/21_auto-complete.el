@@ -51,7 +51,8 @@
      '(ac-use-menu-map t)
      ;; 空気よんでくれるらしい。
      '(ac-dwim t)
-     '(ac-auto-start 3)
+     '(ac-auto-start nil)
+     ;;'(ac-auto-start 3)
      ;;'(ac-auto-start nil) ;; TABで開始
      '(ac-candidate-limit 32) ;; 最大候補個数  これを制限しとかないと重い！！
      )

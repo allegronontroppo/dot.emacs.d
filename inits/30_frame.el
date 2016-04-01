@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-09-30 16:53:18 senda>
+;; Time-stamp: <2016-02-03 12:15:47 shigeya>
 
 ;;; Code:
 
@@ -58,10 +58,15 @@
 ;; 各種色の設定は custom-set-facesで行い、light/darkの設定を行う。
 ;;  http://kei10in.hatenablog.jp/entry/20101101/1288617632
 ;;
-(defvar **use-light-theme** nil "light theme or not")
+;;(defvar **use-light-theme** nil "light theme or not")
+(defvar **use-light-theme** t "light theme or not")
 (cond 
  (**use-light-theme**
-  (use-package moe-theme :ensure t)
+  (el-get-bundle 'moe-theme)
+  (req-package moe-theme
+    :loader el-get
+    :ensure t)
+  ;;(load-theme 'humane t)
   (load-theme 'moe-light t)
   ;;      (setq moe-theme-resize-markdown-title '(2.0 1.7 1.5 1.3 1.0 1.0))
   (setq moe-theme-resize-org-title '(2.2 1.8 1.6 1.4 1.2 1.0 1.0 1.0 1.0))

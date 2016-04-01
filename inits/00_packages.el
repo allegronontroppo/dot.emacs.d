@@ -107,6 +107,9 @@
 ;  :pin manual
 ;)
 
+(custom-set-variables
+	'(package-enable-at-startup nil))
+
 ;; Local Variables:
 ;; truncate-lines: nil
 ;; eval: (orgstruct-mode 1)

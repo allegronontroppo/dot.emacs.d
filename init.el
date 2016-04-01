@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2016-01-25 11:57:35 senda>
+;; Time-stamp: <2016-04-01 15:16:51 shigeya>
 
 ;;--------------------------------------------------------------------
 ;;　el-get + init-loader によるemacs初期化設定
@@ -24,6 +24,17 @@
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
+;; get user:passwd entry from http_proxy environment var and encode it
+(defun get-passwd-encode-string ()
+  (let* ((ev (getenv "http_proxy"))
+	 (x (decode-coding-string (url-unhex-string ev) 'utf-8))
+	 )
+    (if (not (equal x ""))
+	(progn
+	  (setq x (substring x (+ 2 (string-match "//" x)) (string-match "@" x)))
+	  (base64-encode-string x))
+      nil)))
+
 (setq use-proxy t) ; t or nil
 (when use-proxy
   ;; proxy
@@ -37,8 +48,12 @@
   ;; > git config --global https.proxy http://proxy.hogedomain.com:8080
   ;; > git config --global url."https://".insteadOf git://
   ;; > git config --list  <-- これで確認
-)
 
+  ;; from   http://yoshimov.com/tips/emacs-package-list-with-proxy/
+  ;; set value of (base64-decode-string "user:passwd") to last string in the following.
+  (setq url-http-proxy-basic-auth-storage
+	    `(("proxy.ricoh.co.jp:8080" ("Proxy" .  ,(get-passwd-encode-string)  ))))
+  )
 ;;
 (add-to-list 'load-path (locate-user-emacs-file "site-lisp"))
 

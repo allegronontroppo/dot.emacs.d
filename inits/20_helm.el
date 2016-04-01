@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-09-28 17:52:45 senda>
+;; Time-stamp: <2015-10-27 13:42:34 shigeya>
 
 ;;; Code:
 

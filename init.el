@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2016-04-01 15:16:51 shigeya>
+;; Time-stamp: <2016-04-04 10:42:56 senda>
 
 ;;--------------------------------------------------------------------
 ;;　el-get + init-loader によるemacs初期化設定
@@ -35,7 +35,7 @@
 	  (base64-encode-string x))
       nil)))
 
-(setq use-proxy t) ; t or nil
+(setq use-proxy (getenv "http_proxy")) ; http_proxy環境変数があるかどうかでproxy設定するかを決める。
 (when use-proxy
   ;; proxy
   (setq url-proxy-services '(("http"  . "proxy.ricoh.co.jp:8080")
@@ -126,8 +126,14 @@
 ;	       :type github
 ;	       :pkgname "syohex/emacs-anzu")
 ;	(:name header2
-;	       :type http
-;	       :url "https://raw.githubusercontent.com/emacsmirror/emacswiki.org/master/header2.el")
+;	       :type https
+;	       ;;:url "https://raw.githubusercontent.com/emacsmirror/emacswiki.org/master/header2.el"
+;	       :url "https://www.emacswiki.org/emacs/download/header2.el"
+;	       )
+	(:name header2
+	       :description "Support for creation and update of file headers."
+	       :type github
+	       :pkgname "emacsmirror/header2")
 	))
 
 ;; cf https://github.com/uwabami/emacs

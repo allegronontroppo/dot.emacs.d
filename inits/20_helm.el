@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2015-10-27 13:42:34 shigeya>
+;; Time-stamp: <2016-04-04 13:19:03 senda>
 
 ;;; Code:
 
@@ -16,7 +16,7 @@
 
 ;;; ** helm
 ;; from http://koshigoeb.hateblo.jp/entry/2013/01/14/022746
-(use-package helm-config
+(req-package helm-config
   :ensure helm
   :bind
   (("M-g M-b" . helm-buffers-list) ;; buffer-list
@@ -148,8 +148,11 @@
 
 ;;; ** smex
 ;;  M-x のidoバインディング拡張。TABで補完 C-s/C-rで候補を移動
-(use-package smex
-  :ensure smex
+;;; smex
+(el-get-bundle 'smex)
+(req-package smex
+  :ensure t
+  :loader el-get
   :bind
   (
    ("M-x"     . smex)                            ;; call helm-M-x

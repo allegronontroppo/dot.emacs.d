@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2016-04-04 13:19:03 senda>
+;; Time-stamp: <2016-04-04 15:03:01 senda>
 
 ;;; Code:
 
@@ -44,19 +44,19 @@
   :config
   (progn
     (message "loading helm ...")
-    (use-package gist
+    (req-package gist
       :ensure t
       :config
       (use-package helm-gist :ensure t))
-    (use-package helm-git
+    (req-package helm-git
       :ensure t
       ;;:config
       ;;(global-set-key (kbd "C-x C-g") 'helm-git-find-files)
       )
-    (use-package helm-ls-git :ensure t)
+    (req-package helm-ls-git :ensure t)
     ;;(use-package helm-themes :ensure t)  ;; カラーテーマは使わなくなった。
 
-    (use-package helm-ag
+    (req-package helm-ag
       :ensure t
 ;      :bind
 ;      (("C-z a g" . helm-ag)
@@ -72,7 +72,7 @@
 ;	 )
 	))
 
-    (use-package helm-gtags
+    (req-package helm-gtags
       ;; http://d.hatena.ne.jp/syohex/20120705/1341455747
       ;;(autoload 'gtags-mode "gtags" "" t)
       :ensure t
@@ -99,7 +99,7 @@
 	))
 
     ;; http://fukuyama.co/helm-swoop
-    (use-package helm-swoop
+    (req-package helm-swoop
       :ensure t
 ;      :bind
 ;      (("M-'"  . helm-swoop)
@@ -126,13 +126,13 @@
 	(setq helm-swoop-speed-or-color t)
 	))
 
-    (use-package helm-descbinds
+    (req-package helm-descbinds
       ;; http://emacs-jp.github.io/packages/helm/helm-descbinds.html
       :ensure t
       :config (helm-descbinds-install)
       )
     (when (executable-find "cmigemo")
-      (use-package helm-migemo
+      (req-package helm-migemo
 	:ensure t
 	;;:bind   (("C-:" . helm-migemo))
 	:init

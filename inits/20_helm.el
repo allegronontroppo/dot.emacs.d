@@ -5,7 +5,7 @@
 ;; Keywords: emacs
 ;;; Commentary:
 ;;; Change Log:
-;; Time-stamp: <2016-04-04 15:03:01 senda>
+;; Time-stamp: <2016-04-06 16:24:07 senda>
 
 ;;; Code:
 
@@ -13,6 +13,12 @@
 (el-get-bundle logito
   :type git
   :url "https://github.com/sigma/logito.git")
+
+(el-get-bundle 'helm)
+(el-get-bundle 'helm-ag)
+(el-get-bundle 'helm-gtags)
+(el-get-bundle 'helm-swoop)
+(el-get-bundle 'helm-descbinds)
 
 ;;; ** helm
 ;; from http://koshigoeb.hateblo.jp/entry/2013/01/14/022746
@@ -28,7 +34,7 @@
    ("M-g M-f" . helm-find-files) ;; call anything by M-gf
    ("M-g M-m" . helm-mini)       ;; call helm-mini by M-gm
    ("M-g M-y" . helm-show-kill-ring) ;; kill-ring履歴一覧表示
-   ("M-g C-g" . helm-git-find-files)
+;;   ("M-g C-g" . helm-git-find-files)
    ("M-g M-;" . helm-browse-project)
    ;; helm-ag
    ("M-g a g" . helm-ag)
@@ -44,16 +50,20 @@
   :config
   (progn
     (message "loading helm ...")
-    (req-package gist
-      :ensure t
-      :config
-      (use-package helm-gist :ensure t))
-    (req-package helm-git
-      :ensure t
-      ;;:config
-      ;;(global-set-key (kbd "C-x C-g") 'helm-git-find-files)
-      )
-    (req-package helm-ls-git :ensure t)
+;;    (el-get-bundle 'gist)
+;;    (el-get-bundle 'helm-gist)
+;;    (req-package gist
+;;      :ensure t
+;;      :config
+;;      (req-package helm-gist :ensure t))
+;;    (el-get-bundle 'helm-git)
+;;    (req-package helm-git
+;;      :ensure t
+;;      ;;:config
+;;      ;;(global-set-key (kbd "C-x C-g") 'helm-git-find-files)
+;;      )
+;;    (el-get-bundle 'helm-ls-git)
+;;    (req-package helm-ls-git :ensure t)
     ;;(use-package helm-themes :ensure t)  ;; カラーテーマは使わなくなった。
 
     (req-package helm-ag
@@ -132,6 +142,7 @@
       :config (helm-descbinds-install)
       )
     (when (executable-find "cmigemo")
+      (el-get-bundle 'helm-migemo)
       (req-package helm-migemo
 	:ensure t
 	;;:bind   (("C-:" . helm-migemo))
